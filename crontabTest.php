@@ -16,8 +16,8 @@ class crontabTest
         \Log\Log::echos("end");
     }
 }
-//var_dump($argc);
-//var_dump($argv);
+//var_dump($argc);	// 参数个数
+//var_dump($argv);	// 参数数组 第一个参数为文件名
 $date = false;
 if ($argc > 1) {
     $date = $argv[1];

@@ -1,4 +1,4 @@
-#Linux计划任务
+# Linux计划任务
 
 在介绍 crontab 命令之前，首先要介绍一下 crond ，因为 crontab 命令需要 crond 服务支持。 crond 是 Linux 下用来周期地执行某种任务或等待处理某些事件的一个守护进程，和 Windows 下的计划任务有些类似。
 
@@ -13,9 +13,9 @@ crond 服务的启动和自启动方法如下：
 * 当系统中有 `/etc/cron.allow` 文件时，只有写入此文件的用户可以使用 crontab 命令，没有写入的用户不能使用 crontab 命令。同样，如果有此文件 `/etc/cron.deny` 文件会被忽略，因为 `/etc/cron.allow` 文件的优先级更高。
 * 当系统中只有 `/etc/cron.deny` 文件时，写入此文件的用户不能使用 crontab 命令，没有写入文件的用户可以使用 crontab 命令。
 
-`crontab -l`：显示某用户的 crontab 文件内容，如果不指定用户，则表示显示当前用户的 crontab 文件内容。
+* `crontab -l`：显示某用户的 crontab 文件内容，如果不指定用户，则表示显示当前用户的 crontab 文件内容。
 ![](https://img-blog.csdnimg.cn/20191017142040733.png)
-`crontab -e`：编辑某个用户的 crontab 文件内容。如果不指定用户，则表示编辑当前用户的 crontab 文件。
+* `crontab -e`：编辑某个用户的 crontab 文件内容。如果不指定用户，则表示编辑当前用户的 crontab 文件。
 ![](https://img-blog.csdnimg.cn/20191017142121100.png)
 
 这个文件中是通过 5 个 `*` 来确定命令或任务的执行时间的，这 5 个 `*` 的具体含义如下
