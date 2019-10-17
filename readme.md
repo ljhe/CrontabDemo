@@ -14,9 +14,9 @@ crond 服务的启动和自启动方法如下：
 * 当系统中只有 `/etc/cron.deny` 文件时，写入此文件的用户不能使用 crontab 命令，没有写入文件的用户可以使用 crontab 命令。
 
 `crontab -l`：显示某用户的 crontab 文件内容，如果不指定用户，则表示显示当前用户的 crontab 文件内容。
-![](https://i.imgur.com/WG49uTk.png)
+![](https://img-blog.csdnimg.cn/20191017142040733.png)
 `crontab -e`：编辑某个用户的 crontab 文件内容。如果不指定用户，则表示编辑当前用户的 crontab 文件。
-![](https://i.imgur.com/RyCMc2W.png)
+![](https://img-blog.csdnimg.cn/20191017142121100.png)
 
 这个文件中是通过 5 个 `*` 来确定命令或任务的执行时间的，这 5 个 `*` 的具体含义如下
 * 第一个 `*` ：一小时当中的第几分钟（minute） 范围：	0~59
@@ -38,7 +38,7 @@ crond 服务的启动和自启动方法如下：
 设置计划任务之后不执行，把时间点后面的脚本单独复制出来执行没有问题。
 `service crond status` 查看服务的状态，看看是否有报错。
 它的错误日志都会放在 `/var/spool/mail/对应用户名`下，我的错误日志如下：
-
+``` bash
 From root@izuf6hxtmn3a1egw9z21hjz.localdomain  Thu Oct 17 10:46:15 2019
 Return-Path: <root@izuf6hxtmn3a1egw9z21hjz.localdomain>
 X-Original-To: root
@@ -63,7 +63,7 @@ Message-Id: <20191017024615.B67D91202B4@izuf6hxtmn3a1egw9z21hjz.localdomain>
 Date: Wed, 16 Oct 2019 18:54:01 +0800 (CST)
 
 /bin/sh: php: command not found
-
+```
 提示我没有找到PHP命令，是PHP的PATH配置有问题，但是复制出来 `php /root/code/test/crontabTest.php param` 可以执行。
 于是我改成了绝对路径 `/usr/local/php/bin/php /root/code/test/crontabTest.php param` 然后就没有问题，定时任务按时执行。
 
